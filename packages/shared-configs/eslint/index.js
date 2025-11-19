@@ -1,3 +1,9 @@
+/*
+ESLint 传统配置格式
+使用单一对象配置
+适用于 ESLint 8.x 及更早版本
+使用 extends 属性继承配置
+*/
 module.exports = {
   env: {
     browser: true,

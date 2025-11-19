@@ -1,0 +1,27 @@
+{
+  "name": "@tywd/shared-utils",
+  "version": "1.0.0",
+  "description": "基础工具包，提供常用的工具函数",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "keywords": [
+    "utils",
+    "tools",
+    "qiankun",
+    "micro-frontend"
+  ],
+  "author": "tyorg",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.0.0"
+  }
+}

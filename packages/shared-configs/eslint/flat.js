@@ -1,5 +1,10 @@
-// ESLint 扁平配置格式
-// 用于 ESLint 9.0.0 及以上版本
+/*
+ESLint 扁平配置格式，用于 ESLint 9.0.0 及以上版本
+使用配置对象数组
+提供更好的性能和更灵活的配置选项
+使用 languageOptions 替代 env 和 parserOptions
+使用 plugins 对象直接引入插件
+*/
 
 const globals = require('globals');
 
