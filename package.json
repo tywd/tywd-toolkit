@@ -1,0 +1,22 @@
+{
+  "name": "tywd-toolkit",
+  "version": "1.0.0",
+  "description": "A toolkit for frontend development with integrated linting and project scaffolding",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "pnpm install",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "clean": "lerna clean --yes"
+  },
+  "devDependencies": {
+    "lerna": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "pnpm": ">=7.0.0"
+  }
+}

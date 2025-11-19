@@ -1,0 +1,39 @@
+{
+  "name": "@tywd/shared-configs",
+  "version": "1.0.0",
+  "description": "Shared configurations for ESLint, Prettier, Stylelint, and Commitlint",
+  "main": "index.js",
+  "files": [
+    "eslint/*",
+    "prettier/*",
+    "stylelint/*",
+    "commitlint/*",
+    "index.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint-config-prettier": "^8.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "globals": "^13.0.0"
+  },
+  "peerDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^2.0.0",
+    "stylelint": "^14.0.0",
+    "commitlint": "^17.0.0"
+  },
+  "keywords": [
+    "eslint",
+    "prettier",
+    "stylelint",
+    "commitlint",
+    "config"
+  ],
+  "author": "tywd",
+  "license": "MIT"
+}
