@@ -1,6 +1,6 @@
 {
   "name": "@tywd/shared-utils",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "基础工具包，提供常用的工具函数",
   "main": "dist/index.js",
   "module": "dist/index.js",
