@@ -1,6 +1,6 @@
 {
   "name": "@tywd/shared-configs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shared configurations for ESLint, Prettier, Stylelint, and Commitlint",
   "main": "index.js",
   "files": [
