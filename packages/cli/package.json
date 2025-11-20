@@ -16,7 +16,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@tywd/shared-configs": "workspace:*",
+    "@tywd/shared-configs": "1.0.1",
     "chalk": "^4.0.0",
     "commander": "^9.0.0",
     "ejs": "^3.1.6",
@@ -32,5 +32,6 @@
     "frontend"
   ],
   "author": "tywd",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "a2a9406a366a043a92d74cc9d051bbe4aae23393"
 }
