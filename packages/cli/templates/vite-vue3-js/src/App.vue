@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Welcome to <%= appName %>!</h1>
+    <h1>Welcome to <%= projectName %>!</h1>
     <p>This is a Vite + Vue 3 JavaScript project.</p>
   </div>
 </template>

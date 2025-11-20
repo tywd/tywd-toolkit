@@ -35,14 +35,22 @@ async function createProject() {
       default: 'my-project',
     },
     {
+      type: 'input',
+      name: 'projectDescription',
+      message: 'Project description:',
+      default: 'A new project created with TYWD CLI',
+    },
+    {
       type: 'list',
       name: 'template',
       message: 'Select a template:',
       choices: [
+        { name: 'Qiankun + Vite + Vue 3 (TypeScript)', value: 'qiankun-vite-sub' },
+        { name: 'Qiankun + Webpack + Vue 3 (TypeScript)', value: 'qiankun-webpack-sub' },
         { name: 'Vite + Vue 3 (JavaScript)', value: 'vite-vue3-js' },
         { name: 'Vite + Vue 3 (TypeScript)', value: 'vite-vue3-ts' },
       ],
-      default: 'vite-vue3-js',
+      default: 'qiankun-vite-sub',
     },
     {
       type: 'confirm',
@@ -72,7 +80,7 @@ async function createProject() {
     const templatePath = path.join(TEMPLATE_DIR, template);
     if (fs.existsSync(templatePath)) {
       // 如果模板存在，则复制模板文件并渲染EJS变量
-      await copyAndRenderTemplate(templatePath, projectPath, { appName: projectName });
+      await copyAndRenderTemplate(templatePath, projectPath, { projectName, projectDescription });
     } else {
       // 如果模板不存在，则创建基本结构
       await createBasicTemplate(projectPath, template);
@@ -158,6 +166,7 @@ async function copyAndRenderTemplate(templatePath, projectPath, data) {
   }
 }
 
+// Create basic project structure and files
 async function createBasicTemplate(projectPath, template) {
   // Create basic package.json
   const pkg = {
