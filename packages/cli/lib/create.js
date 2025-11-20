@@ -107,6 +107,16 @@ async function createProject() {
 
     spinner.succeed('Project created successfully!');
 
+    // Initialize git repository
+    try {
+      execSync('git init', { stdio: 'ignore' });
+      execSync('git add .', { stdio: 'ignore' });
+      execSync('git commit -m "Initial commit"', { stdio: 'ignore' });
+    } catch (error) {
+      // If git is not available or fails, continue without git initialization
+      console.warn(chalk.yellow('Warning: Failed to initialize git repository'));
+    }
+
     // Install dependencies
     if (installDeps) {
       const installSpinner = ora('Installing dependencies...').start();
