@@ -1,6 +1,6 @@
 {
   "name": "@tywd/shared-configs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shared configurations for ESLint, Prettier, Stylelint, and Commitlint",
   "main": "index.js",
   "files": [
@@ -22,10 +22,10 @@
     "eslint-plugin-vue": "^9.0.0"
   },
   "peerDependencies": {
+    "commitlint": "^17.0.0",
     "eslint": "^8.0.0",
     "prettier": "^2.0.0",
-    "stylelint": "^14.0.0",
-    "commitlint": "^17.0.0"
+    "stylelint": "^14.0.0"
   },
   "keywords": [
     "eslint",

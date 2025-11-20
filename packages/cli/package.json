@@ -1,6 +1,6 @@
 {
   "name": "@tywd/cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI tool for frontend project scaffolding and linting",
   "main": "index.js",
   "bin": {
@@ -16,16 +16,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "commander": "^9.0.0",
-    "inquirer": "^8.0.0",
+    "@tywd/shared-configs": "workspace:*",
     "chalk": "^4.0.0",
-    "fs-extra": "^10.0.0",
+    "commander": "^9.0.0",
     "ejs": "^3.1.6",
     "execa": "^5.1.1",
-    "ora": "^5.4.1",
-    "@tywd/shared-configs": "workspace:*"  
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.0.0",
+    "ora": "^5.4.1"
   },
-  "devDependencies": {},
   "keywords": [
     "cli",
     "scaffolding",
