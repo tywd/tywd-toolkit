@@ -42,7 +42,7 @@ init 命令用于在现有项目中初始化代码规范配置。
 
 #### 实现细节
 1. 检查项目根目录是否存在 package.json
-2. 生成 ESLint 配置文件 (.eslintrc)
+2. 生成 ESLint 配置文件 (eslint.config.js)
 3. 生成 Prettier 配置文件 (.prettierrc)
 4. 生成 Stylelint 配置文件 (.stylelintrc)
 5. 生成 Commitlint 配置文件 (commitlint.config.js)

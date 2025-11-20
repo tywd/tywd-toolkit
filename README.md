@@ -18,7 +18,8 @@ tywd-toolkit/
 ├─ docs/                   # 文档目录
 │  ├─ IMPLEMENTATION.md     # 实现文档
 │  ├─ TEST_AND_PUBLISH.md   # 测试和发布文档
-│  └─ OVERVIEW.md           # 完整说明文档
+│  ├─ OVERVIEW.md           # 完整说明文档
+│  └─ ERROR_FIXES.md        # 错误修复记录
 ├─ packages/
 │  ├─ shared-configs/       # 统一配置包（集合eslint，prettier，stylinit，commitlint可结合husky使用，对内对外均可使用）
 │  ├─ shared-utils/         # 基础工具包
@@ -116,9 +117,12 @@ tywd --help
    lerna publish
    
    # 或者单独发布某个包
+   lerna publish --scope=@tywd/shared-utils
    lerna publish --scope=@tywd/shared-configs
    lerna publish --scope=@tywd/cli
    ```
+   
+> 注意：请确保使用 Lerna 8.x 版本，旧版本可能存在兼容性问题。
 
 ## 配置说明
 

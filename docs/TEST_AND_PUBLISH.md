@@ -123,8 +123,11 @@ pnpm run build
 lerna publish
 
 # 或者选择要发布的包
+lerna publish --scope=@tywd/shared-utils
 lerna publish --scope=@tywd/shared-configs
 lerna publish --scope=@tywd/cli
+
+> 注意：请确保使用 Lerna 8.x 版本，旧版本可能存在兼容性问题。
 ```
 
 Lerna 会：

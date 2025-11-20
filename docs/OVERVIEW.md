@@ -291,4 +291,51 @@ npx @tywd/cli fix
 - 提供技术支持渠道
 - 定期发布更新和改进
 
+## 最新错误修复记录
+
+### Lerna 配置错误修复
+
+#### 问题描述
+在尝试发布 TYWD Toolkit 时，运行 `lerna publish` 命令失败，出现以下错误：
+```
+lerna ERR! ECONFIGWORKSPACES The "useWorkspaces" option has been removed. By default lerna will resolve your packages using your package manager's workspaces configuration. Alternatively, you can manually provide a list of package globs to be used instead via the "packages" option in lerna.json.
+```
+
+#### 问题分析
+Lerna 的新版本已经移除了 `useWorkspaces` 选项。默认情况下，Lerna 会使用包管理器的工作区配置来解析包。由于我们已经在 `lerna.json` 中通过 `packages` 选项指定了包的路径，因此不再需要 `useWorkspaces` 选项。
+
+#### 修复过程
+移除了 `lerna.json` 文件中的 `"useWorkspaces": true` 配置项：
+
+**修复前**：
+```json
+{
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent",
+  "npmClient": "pnpm",
+  "useWorkspaces": true
+}
+```
+
+**修复后**：
+```json
+{
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent",
+  "npmClient": "pnpm"
+}
+```
+
+#### 验证结果
+修复后，Lerna 命令可以正常执行。
+
+#### 经验总结
+1. 需要定期更新工具链配置以适应新版本的变化
+2. Lerna 新版本默认使用包管理器的工作区配置，无需额外配置
+3. 在升级工具版本时，应检查官方文档了解破坏性变更
+
 通过以上拓展计划，TYWD Toolkit 将成为一个更加完善和强大的前端开发工具包，能够满足不同项目和团队的需求，提高开发效率和代码质量。

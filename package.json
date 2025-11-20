@@ -13,7 +13,7 @@
     "clean": "lerna clean --yes"
   },
   "devDependencies": {
-    "lerna": "^6.0.0"
+    "lerna": "^8.0.0"
   },
   "engines": {
     "node": ">=14.0.0",
