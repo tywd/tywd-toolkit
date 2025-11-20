@@ -295,16 +295,18 @@ npx @tywd/cli fix
 
 ### Lerna 配置错误修复
 
-#### 问题描述
+#### 问题1：`useWorkspaces` 选项被移除
+
+##### 问题描述
 在尝试发布 TYWD Toolkit 时，运行 `lerna publish` 命令失败，出现以下错误：
 ```
 lerna ERR! ECONFIGWORKSPACES The "useWorkspaces" option has been removed. By default lerna will resolve your packages using your package manager's workspaces configuration. Alternatively, you can manually provide a list of package globs to be used instead via the "packages" option in lerna.json.
 ```
 
-#### 问题分析
+##### 问题分析
 Lerna 的新版本已经移除了 `useWorkspaces` 选项。默认情况下，Lerna 会使用包管理器的工作区配置来解析包。由于我们已经在 `lerna.json` 中通过 `packages` 选项指定了包的路径，因此不再需要 `useWorkspaces` 选项。
 
-#### 修复过程
+##### 修复过程
 移除了 `lerna.json` 文件中的 `"useWorkspaces": true` 配置项：
 
 **修复前**：
@@ -330,12 +332,39 @@ Lerna 的新版本已经移除了 `useWorkspaces` 选项。默认情况下，Ler
 }
 ```
 
+#### 问题2：缺少 `useWorkspaces` 配置
+
+##### 问题描述
+在移除 `useWorkspaces` 配置后，运行 `pnpm run build` 命令失败，出现以下错误：
+```
+lerna ERR! ENOWORKSPACES Usage of pnpm without workspaces is not supported. To use pnpm with lerna, set useWorkspaces to true in lerna.json and configure pnpm to use workspaces: https://pnpm.io/workspaces.
+```
+
+##### 问题分析
+虽然新版本 Lerna 文档说移除了 `useWorkspaces` 选项，但在实际使用中，特别是与 pnpm 结合使用时，仍然需要在 `lerna.json` 中设置 `useWorkspaces` 为 true。
+
+##### 修复过程
+重新添加了 `lerna.json` 文件中的 `"useWorkspaces": true` 配置项：
+
+**修复后**：
+```json
+{
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent",
+  "npmClient": "pnpm",
+  "useWorkspaces": true
+}
+```
+
 #### 验证结果
 修复后，Lerna 命令可以正常执行。
 
 #### 经验总结
 1. 需要定期更新工具链配置以适应新版本的变化
-2. Lerna 新版本默认使用包管理器的工作区配置，无需额外配置
+2. 不同版本的 Lerna 对 workspaces 配置的要求可能不同
 3. 在升级工具版本时，应检查官方文档了解破坏性变更
+4. 有时需要根据实际运行情况调整配置，而不是完全依赖文档说明
 
 通过以上拓展计划，TYWD Toolkit 将成为一个更加完善和强大的前端开发工具包，能够满足不同项目和团队的需求，提高开发效率和代码质量。
