@@ -18,7 +18,6 @@ tywd-toolkit/
 ├─ docs/                   # 文档目录
 │  ├─ IMPLEMENTATION.md     # 实现文档
 │  ├─ TEST_AND_PUBLISH.md   # 测试和发布文档
-│  ├─ OVERVIEW.md           # 完整说明文档
 │  └─ ERROR_FIXES.md        # 错误修复记录
 ├─ packages/
 │  ├─ shared-configs/       # 统一配置包（集合eslint，prettier，stylinit，commitlint可结合husky使用，对内对外均可使用）
@@ -28,6 +27,76 @@ tywd-toolkit/
 ├─ pnpm-workspace.yaml      # pnpm Workspace 配置
 └─ package.json             # 项目配置
 ```
+[IMPLEMENTATION.md](./docs/IMPLEMENTATION.md)  # 实现文档\
+[TEST_AND_PUBLISH.md](./docs/TEST_AND_PUBLISH.md) # 测试和发布文档\
+[ERROR_FIXES.md](./docs/ERROR_FIXES.md)  # 错误修复记录
+## 核心功能
+
+### 1. 项目脚手架 (Project Scaffolding)
+通过交互式命令行界面快速创建项目模板：
+- 支持多种技术栈模板选择
+- 自动创建项目目录结构
+- 生成基础配置文件
+- 可选自动安装依赖
+
+### 2. 代码规范 (Code Standards)
+集成主流代码规范工具，确保代码质量一致性：
+- **ESLint**：JavaScript/TypeScript 代码检查
+- **Prettier**：代码格式化
+- **Stylelint**：CSS/SCSS 样式规范检查
+- **Commitlint**：Git 提交信息规范检查
+
+### 3. 一键接入 (One-click Integration)
+为现有项目快速集成代码规范配置：
+- 自动生成所需的 Lint 配置文件
+- 配置 Husky Git hooks
+- 设置 lint-staged 配置
+
+### 4. 代码修复 (Code Fixing)
+自动扫描和修复代码规范问题：
+- 执行 ESLint 自动修复
+- 执行 Prettier 格式化
+- 执行 Stylelint 自动修复
+
+### 5. 提交规范 (Commit Standards)
+集成 Commitlint + Husky 实现提交信息格式校验：
+- 检查提交信息格式
+- 提交前自动修复代码问题
+- 确保代码质量符合规范
+
+## 包结构详解
+
+### @tywd/shared-configs
+统一配置包，包含以下配置：
+- **ESLint 配置**：基于 Vue 3 和 TypeScript 的推荐规则，支持传统格式和扁平格式（ESLint 9.0.0+）
+- **Prettier 配置**：统一的代码格式化规则
+- **Stylelint 配置**：CSS/SCSS 样式规范检查
+- **Commitlint 配置**：Git 提交信息规范检查
+
+### @tywd/shared-utils
+基础工具包，提供常用的工具函数：
+- 日期处理工具
+- 后续将扩展更多实用工具函数
+
+### @tywd/cli
+命令行工具包，提供以下命令：
+- `create`：交互式创建新项目
+- `init`：在现有项目中初始化代码规范配置
+- `fix`：扫描并自动修复代码规范问题
+
+## 项目模板
+
+### 当前支持的模板
+1. **qiankun-vite-sub**：基于 Vite 和 Vue 3 的微前端子应用模板
+2. **qiankun-webpack-sub**：基于 Webpack 和 Vue 3 的微前端子应用模板
+3. **vite-vue3-js**：Vite + Vue 3 JavaScript 模板
+4. **vite-vue3-ts**：Vite + Vue 3 TypeScript 模板
+
+### 模板特性
+- 集成完整的代码规范工具（ESLint、Prettier、Stylelint、Commitlint、Husky、lint-staged）
+- 预配置 Git hooks
+- 包含 .npmrc 配置文件
+- 支持工作区内和工作区外使用
 
 ## 安装
 
@@ -154,82 +223,6 @@ CLI 工具提供以下命令：
 - [husky](https://typicode.github.io/husky/)：Git hooks 工具
 - [Inquirer](https://github.com/SBoudrias/Inquirer.js/)：交互式命令行工具
 - [ejs](https://ejs.co/)：模板引擎
-
-## 许可证
-
-MIT
-
-## 项目概述
-
-TYWD Toolkit 是一个前端开发工具包，集成了项目脚手架和代码规范功能，基于 Lerna + pnpm 管理的 Monorepo 架构。该工具包旨在提高前端开发效率，统一团队代码规范，简化项目初始化流程。
-
-## 核心功能
-
-### 1. 项目脚手架 (Project Scaffolding)
-通过交互式命令行界面快速创建项目模板：
-- 支持多种技术栈模板选择
-- 自动创建项目目录结构
-- 生成基础配置文件
-- 可选自动安装依赖
-
-### 2. 代码规范 (Code Standards)
-集成主流代码规范工具，确保代码质量一致性：
-- **ESLint**：JavaScript/TypeScript 代码检查
-- **Prettier**：代码格式化
-- **Stylelint**：CSS/SCSS 样式规范检查
-- **Commitlint**：Git 提交信息规范检查
-
-### 3. 一键接入 (One-click Integration)
-为现有项目快速集成代码规范配置：
-- 自动生成所需的 Lint 配置文件
-- 配置 Husky Git hooks
-- 设置 lint-staged 配置
-
-### 4. 代码修复 (Code Fixing)
-自动扫描和修复代码规范问题：
-- 执行 ESLint 自动修复
-- 执行 Prettier 格式化
-- 执行 Stylelint 自动修复
-
-### 5. 提交规范 (Commit Standards)
-集成 Commitlint + Husky 实现提交信息格式校验：
-- 检查提交信息格式
-- 提交前自动修复代码问题
-- 确保代码质量符合规范
-
-## 包结构详解
-
-### @tywd/shared-configs
-统一配置包，包含以下配置：
-- **ESLint 配置**：基于 Vue 3 和 TypeScript 的推荐规则，支持传统格式和扁平格式（ESLint 9.0.0+）
-- **Prettier 配置**：统一的代码格式化规则
-- **Stylelint 配置**：CSS/SCSS 样式规范检查
-- **Commitlint 配置**：Git 提交信息规范检查
-
-### @tywd/shared-utils
-基础工具包，提供常用的工具函数：
-- 日期处理工具
-- 后续将扩展更多实用工具函数
-
-### @tywd/cli
-命令行工具包，提供以下命令：
-- `create`：交互式创建新项目
-- `init`：在现有项目中初始化代码规范配置
-- `fix`：扫描并自动修复代码规范问题
-
-## 项目模板
-
-### 当前支持的模板
-1. **qiankun-vite-sub**：基于 Vite 和 Vue 3 的微前端子应用模板
-2. **qiankun-webpack-sub**：基于 Webpack 和 Vue 3 的微前端子应用模板
-3. **vite-vue3-js**：Vite + Vue 3 JavaScript 模板
-4. **vite-vue3-ts**：Vite + Vue 3 TypeScript 模板
-
-### 模板特性
-- 集成完整的代码规范工具（ESLint、Prettier、Stylelint、Commitlint、Husky、lint-staged）
-- 预配置 Git hooks
-- 包含 .npmrc 配置文件
-- 支持工作区内和工作区外使用
 
 ## 未来拓展计划
 
@@ -375,80 +368,6 @@ TYWD Toolkit 是一个前端开发工具包，集成了项目脚手架和代码�
 - 提供技术支持渠道
 - 定期发布更新和改进
 
-## 最新错误修复记录
+## 许可证
 
-### Lerna 配置错误修复
-
-#### 问题1：`useWorkspaces` 选项被移除
-
-##### 问题描述
-在尝试发布 TYWD Toolkit 时，运行 `lerna publish` 命令失败，出现以下错误：
-```
-lerna ERR! ECONFIGWORKSPACES The "useWorkspaces" option has been removed. By default lerna will resolve your packages using your package manager's workspaces configuration. Alternatively, you can manually provide a list of package globs to be used instead via the "packages" option in lerna.json.
-```
-
-##### 问题分析
-Lerna 的新版本已经移除了 `useWorkspaces` 选项。默认情况下，Lerna 会使用包管理器的工作区配置来解析包。由于我们已经在 `lerna.json` 中通过 `packages` 选项指定了包的路径，因此不再需要 `useWorkspaces` 选项。
-
-##### 修复过程
-移除了 `lerna.json` 文件中的 `"useWorkspaces": true` 配置项：
-
-**修复前**：
-```json
-{
-  "packages": [
-    "packages/*"
-  ],
-  "version": "independent",
-  "npmClient": "pnpm",
-  "useWorkspaces": true
-}
-```
-
-**修复后**：
-```json
-{
-  "packages": [
-    "packages/*"
-  ],
-  "version": "independent",
-  "npmClient": "pnpm"
-}
-```
-
-#### 问题2：缺少 `useWorkspaces` 配置
-
-##### 问题描述
-在移除 `useWorkspaces` 配置后，运行 `pnpm run build` 命令失败，出现以下错误：
-```
-lerna ERR! ENOWORKSPACES Usage of pnpm without workspaces is not supported. To use pnpm with lerna, set useWorkspaces to true in lerna.json and configure pnpm to use workspaces: https://pnpm.io/workspaces.
-```
-
-##### 问题分析
-虽然新版本 Lerna 文档说移除了 `useWorkspaces` 选项，但在实际使用中，特别是与 pnpm 结合使用时，仍然需要在 `lerna.json` 中设置 `useWorkspaces` 为 true。
-
-##### 修复过程
-重新添加了 `lerna.json` 文件中的 `"useWorkspaces": true` 配置项：
-
-**修复后**：
-```json
-{
-  "packages": [
-    "packages/*"
-  ],
-  "version": "independent",
-  "npmClient": "pnpm",
-  "useWorkspaces": true
-}
-```
-
-#### 验证结果
-修复后，Lerna 命令可以正常执行。
-
-#### 经验总结
-1. 需要定期更新工具链配置以适应新版本的变化
-2. 不同版本的 Lerna 对 workspaces 配置的要求可能不同
-3. 在升级工具版本时，应检查官方文档了解破坏性变更
-4. 有时需要根据实际运行情况调整配置，而不是完全依赖文档说明
-
-通过以上拓展计划，TYWD Toolkit 将成为一个更加完善和强大的前端开发工具包，能够满足不同项目和团队的需求，提高开发效率和代码质量。
+MIT
