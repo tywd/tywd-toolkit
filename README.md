@@ -15,12 +15,17 @@ TYWD Toolkit 是一个前端开发工具包，集成了项目脚手架和代码�
 
 ```
 tywd-toolkit/
+├─ docs/                   # 文档目录
+│  ├─ IMPLEMENTATION.md     # 实现文档
+│  ├─ TEST_AND_PUBLISH.md   # 测试和发布文档
+│  └─ OVERVIEW.md           # 完整说明文档
 ├─ packages/
-│  ├─ shared-configs/      # 统一配置包（集合eslint，prettier，stylinit，commitlint可结合husky使用，对内对外均可使用）
-│  └─ cli/                 # 应用脚手架（可初始化vue3应用，后续支持扩展新的应用模板选择）
-├─ lerna.json              # Lerna 配置
-├─ pnpm-workspace.yaml     # pnpm Workspace 配置
-└─ package.json            # 项目配置
+│  ├─ shared-configs/       # 统一配置包（集合eslint，prettier，stylinit，commitlint可结合husky使用，对内对外均可使用）
+│  ├─ shared-utils/         # 基础工具包
+│  └─ cli/                  # 应用脚手架（可初始化vue3应用，后续支持扩展新的应用模板选择）
+├─ lerna.json               # Lerna 配置
+├─ pnpm-workspace.yaml      # pnpm Workspace 配置
+└─ package.json             # 项目配置
 ```
 
 ## 安装

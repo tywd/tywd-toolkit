@@ -67,6 +67,27 @@ pnpm build
 pnpm preview
 ```
 
+## 代码规范
+
+该模板集成了完整的代码规范工具：
+
+- **ESLint**: JavaScript/TypeScript 代码检查
+- **Prettier**: 代码格式化
+- **Stylelint**: CSS/SCSS 样式检查
+- **Commitlint**: Git 提交信息规范检查
+- **Husky**: Git hooks
+- **lint-staged**: 对暂存文件进行检查
+
+可以通过以下命令检查代码：
+```bash
+pnpm lint
+```
+
+自动修复代码问题：
+```bash
+pnpm lint:fix
+```
+
 ## 文档
 
 该模板集成了 VitePress 文档系统，可以通过以下命令启动文档开发服务器：

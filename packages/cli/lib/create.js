@@ -80,7 +80,7 @@ async function createProject() {
     const templatePath = path.join(TEMPLATE_DIR, template);
     if (fs.existsSync(templatePath)) {
       // 如果模板存在，则复制模板文件并渲染EJS变量
-      await copyAndRenderTemplate(templatePath, projectPath, { projectName, projectDescription });
+      await copyAndRenderTemplate(templatePath, projectPath, { projectName });
     } else {
       // 如果模板不存在，则创建基本结构
       await createBasicTemplate(projectPath, template);
