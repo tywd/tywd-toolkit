@@ -1,7 +1,7 @@
 {
   "name": "@tywd/shared-configs",
   "version": "1.0.3",
-  "description": "Shared configurations for ESLint, Prettier, Stylelint, and Commitlint",
+  "description": "TYWD 工具包的共享配置集合，包含 ESLint、Prettier、Stylelint 和 Commitlint 的标准化配置。",
   "main": "index.js",
   "files": [
     "eslint/*",
