@@ -59,7 +59,7 @@ src/dateUtils.ts(12,44): error TS2550: Property 'padStart' does not exist on typ
 ### 验证结果
 修复后，运行 `pnpm run build` 命令成功执行：
 ```
-> tywd-toolkit@1.0.0 build /Users/shichuyu/Desktop/web/qoder/tywd-toolkit
+> tywd-toolkit@1.0.0 build /tywd-toolkit
 > lerna run build
 
 lerna notice cli v6.6.2
@@ -133,7 +133,7 @@ lerna ERR! ENOWORKSPACES Usage of pnpm without workspaces is not supported. To u
 ### 验证结果
 修复后，运行 `pnpm run build` 命令成功执行，所有包的构建产物都已正确生成：
 ```
-> tywd-toolkit@1.0.0 build /Users/shichuyu/Desktop/web/qoder/tywd-toolkit
+> tywd-toolkit@1.0.0 build /tywd-toolkit
 > lerna run build
 
 lerna notice cli v6.6.2
