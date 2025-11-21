@@ -2,6 +2,8 @@
 
 这是一个基于 Webpack 和 Vue 3 的微前端子应用模板，适用于 qiankun 微前端架构。
 
+构建来自 https://github.com/tywd/tywd-toolkit.git 工具
+
 ## 使用方法
 
 1. 确保已安装 CLI 工具：

@@ -1,5 +1,7 @@
 # <%= projectName %>
 
+构建来自 https://github.com/tywd/tywd-toolkit.git 工具
+
 ## Project setup
 
 ```bash
