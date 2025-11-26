@@ -1,6 +1,6 @@
 {
   "name": "@tywd/cli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "TYWD 命令行工具，用于前端项目脚手架搭建和代码规范配置。",
   "main": "index.js",
   "bin": {
