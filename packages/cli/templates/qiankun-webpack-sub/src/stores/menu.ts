@@ -32,8 +32,8 @@ export const useMenuStore = defineStore('menu', {
       // },
     ] as MenuItem[],
     collapsed: false, // 侧边栏是否折叠
-    activeMenu: 'home', // 当前激活的菜单
-    openMenus: ['home'] as string[], // 展开的菜单项
+    activeMenu: 'dashboard', // 当前激活的菜单
+    openMenus: ['dashboard'] as string[], // 展开的菜单项
     isLoaded: false // 是否加载完成所有菜单
   }),
 

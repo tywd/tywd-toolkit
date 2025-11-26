@@ -40,7 +40,10 @@ router.beforeEach((to, from, next) => {
   })
   const tabsStore = useTabsStore();
   const menuStore = useMenuStore();
-  menuStore.mergeMenu(getAllRoute());
+  // 只在首次加载时合并菜单，避免重复添加
+  if (!menuStore.isLoaded) {
+    menuStore.mergeMenu(getAllRoute());
+  }
   if (to.meta?.title) {
     document.title = `子应用 - ${to.meta.title}`
     // 设置激活的菜单

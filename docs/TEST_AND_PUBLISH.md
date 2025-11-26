@@ -4,7 +4,7 @@
 
 ### 环境准备
 
-1. 确保已安装 Node.js (>=14.0.0) 和 pnpm (>=7.0.0)
+1. 确保已安装 Node.js (>=20.0.0) 和 pnpm (>=8.0.0)
 2. 克隆项目到本地：
    ```bash
    git clone <repository-url>

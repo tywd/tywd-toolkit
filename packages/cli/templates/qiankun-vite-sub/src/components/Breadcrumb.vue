@@ -11,42 +11,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-
-interface BreadcrumbItem {
-  title: string
-  path: string
-}
-
+import { useMenuStore } from '@/stores/menu';
+const menuStore = useMenuStore();
 const route = useRoute()
-const breadcrumbItems = ref<BreadcrumbItem[]>([])
-
-// 根据路由生成面包屑
-const generateBreadcrumb = () => {
-  const matched = route.matched.filter(item => item.meta && item.meta.title)
-  const first = matched[0]
-  
-  if (first && first.name !== 'Dashboard') {
-    breadcrumbItems.value = [
-      { title: '首页', path: '/dashboard' },
-      ...matched.map(item => ({
-        title: item.meta?.title as string || item.name as string,
-        path: item.path
-      }))
-    ]
-  } else {
-    breadcrumbItems.value = matched.map(item => ({
-      title: item.meta?.title as string || item.name as string,
-      path: item.path
-    }))
-  }
-}
-
-// 监听路由变化
-watch(route, () => {
-  generateBreadcrumb()
-}, { immediate: true })
+const breadcrumbItems = computed(() => {
+  return menuStore.getBreadcrumb(route.path);
+});
 </script>
 
 <style scoped>

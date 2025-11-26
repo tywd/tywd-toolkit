@@ -6,7 +6,7 @@ import { cancelAllRequests } from './requestManager';
 
 // 创建 axios 实例
 const service: AxiosInstance = axios.create({
-  baseURL: process.env.NODE_ENV === 'development' ? '/api' : '/prod', // 根据环境设置基础URL
+  baseURL: typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development' ? '/api' : '/prod', // 根据环境设置基础URL
   timeout: 5000, // 全局超时时间（5秒）
   headers: { 'Content-Type': 'application/json' }
 });

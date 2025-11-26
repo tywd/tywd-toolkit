@@ -8,7 +8,7 @@
 import BasicLayout from '@/layout/BasicLayout.vue';
 </script>
 
-<style scoped>
+<style>
 * {
   margin: 0;
   padding: 0;
@@ -20,5 +20,12 @@ import BasicLayout from '@/layout/BasicLayout.vue';
     'Microsoft YaHei', 'SimSun', sans-serif;
   height: 100vh;
   overflow: hidden;
+}
+</style>
+
+<style scoped>
+/* 确保在微前端环境中样式正确应用 */
+#sub-app {
+  height: 100%;
 }
 </style>

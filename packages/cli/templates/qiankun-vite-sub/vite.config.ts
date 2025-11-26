@@ -1,26 +1,40 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
-import { name } from './package.json'
+import { resolve, dirname } from 'path'
+import { fileURLToPath } from 'url'
 import qiankun from 'vite-plugin-qiankun'
 
-// 获取基础路径，Vercel部署时使用环境变量，本地开发时使用默认值
-const base = process.env.BASE_PATH || '/';
+// 添加 Node.js 类型声明
+/// <reference types="node" />
+
+// 在 ES 模块中获取 __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: base, // 设置基础路径，确保在Vercel上正确部署
+export default defineConfig(({ mode }: { mode: string }) => {
+  // 加载环境变量
+  const env = loadEnv(mode, process.cwd(), '');
+  
+  // 根据环境设置base路径
+  const isProd = mode === 'production';
+  const basePath = isProd ? (env.BASE_PATH || '/sub-app/') : '/';
+  
+  return {
+  base: basePath, // 设置基础路径，确保在Vercel上正确部署
   plugins: [
     vue(),
-    qiankun(name, {
-      useDevMode: true
+    qiankun('sub-app', {
+      useDevMode: mode !== 'production'
     })
   ],
   define: {
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    // 在生产环境中定义生产环境变量
+    __VUE_PROD_DEVTOOLS__: false,
+    // 移除硬编码的NODE_ENV，让Vite自动处理
   },
   server: {
-    port: process.env.PORT || 8082,
+    port: env.PORT ? parseInt(env.PORT, 10) : 8081,
     host: '0.0.0.0',
     cors: true,
     proxy: {
@@ -41,15 +55,44 @@ export default defineConfig({
     assetsDir: 'assets',
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vue-vendor': ['vue', 'vue-router'],
-          'element-vendor': ['element-plus', '@element-plus/icons-vue'],
+        // 更通用的分块策略
+        manualChunks: (id: string) => {
+          if (id.includes('node_modules')) {
+            if (id.includes('vue')) {
+              return 'vue-vendor';
+            }
+            if (id.includes('element-plus')) {
+              return 'element-vendor';
+            }
+            return 'vendor';
+          }
         }
       }
     },
     cssCodeSplit: true,
     chunkSizeWarningLimit: 500,
     sourcemap: false,
-    minify: 'terser'
+    minify: 'terser',
+    commonjsOptions: {
+      include: [/node_modules/],
+      transformMixedEsModules: true
+    }
+  },
+  css: {
+    modules: {
+      generateScopedName: '[name]__[local]___[hash:base64:5]'
+    },
+    // 确保在生产环境中不丢失CSS
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/variables.scss" as *;`
+      }
+    }
+  },
+  // 添加这个配置来解决undici相关的问题
+  optimizeDeps: {
+    include: ['vue', 'vue-router', 'element-plus', '@element-plus/icons-vue'],
+    exclude: ['undici']
+  }
   }
 })
