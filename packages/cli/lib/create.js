@@ -60,7 +60,7 @@ async function createProject() {
     },
   ]);
 
-  const { projectName, template, installDeps } = answers;
+  const { projectName, projectDescription, template, installDeps } = answers;
   const projectPath = path.join(process.cwd(), projectName);
 
   // Check if directory already exists
@@ -80,7 +80,7 @@ async function createProject() {
     const templatePath = path.join(TEMPLATE_DIR, template);
     if (fs.existsSync(templatePath)) {
       // 如果模板存在，则复制模板文件并渲染EJS变量
-      await copyAndRenderTemplate(templatePath, projectPath, { projectName });
+      await copyAndRenderTemplate(templatePath, projectPath, { projectName, projectDescription });
     } else {
       // 如果模板不存在，则创建基本结构
       await createBasicTemplate(projectPath, template);
@@ -91,6 +91,7 @@ async function createProject() {
     if (fs.existsSync(pkgPath)) {
       const pkg = fs.readJsonSync(pkgPath);
       pkg.name = projectName;
+      pkg.description = projectDescription;
       
       // 检查是否在 tywd-toolkit 工作区内
       const inWorkspace = isInTywdWorkspace(projectPath);
