@@ -1,6 +1,6 @@
 # TYWD Toolkit
 
-TYWD Toolkit 是一个前端开发工具包，集成了项目脚手架和代码规范功能，基于 Lerna + pnpm 管理的 Monorepo 架构。\
+TYWD Toolkit 是一个前端开发工具包，集成了项目脚手架和代码规范功能，基于 Lerna + pnpm 管理的 Monorepo 架构。
 > PS：属于自用项目，暂时可能还未成熟，等成熟后会删除此段说明
 
 ## 功能特性
